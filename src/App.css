@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+body,
+html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bg {
+  background-image: url('/static/background.png');
+  /* Path to your static background image */
+  height: 100vh;
+  /* Full viewport height */
+  width: 100vw;
+  /* Full viewport width */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* Ensure the image covers the entire area */
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* Center content horizontally */
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* Center content vertically */
   color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.chatbot-container {
+  position: fixed;
+  /* Fix position to bottom right */
+  bottom: 20px;
+  /* Space above the chatbot */
+  right: 20px;
+  /* Space from the right edge */
+  transition: all 0.2s ease;
+  /* Smooth opening animation */
+  z-index: 1000;
+  /* Ensure it is on top */
+  opacity: 0;
+  /* Start with opacity 0 for transition */
+  transform: translateY(20px);
+  /* Start position for transition */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chatbot-container iframe {
+  border: none;
+  /* Remove default iframe border */
+}
+
+.chatbot-button {
+  position: fixed;
+  /* Fix position to bottom right */
+  bottom: 20px;
+  /* Space from the bottom */
+  right: 20px;
+  /* Space from the right */
+  background-color: #1976D2;
+  /* Button color */
+  color: white;
+  /* Text color */
+  padding: 15px;
+  border-radius: 50%;
+  /* Circular button */
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 24px;
+  /* Adjust size of the icon */
+  z-index: 1000;
+  /* Ensure it is on top */
+  transition: background-color 0.3s;
+  /* Transition for button color */
+}
+
+.chatbot-button:hover {
+  background-color: #4D82B7;
+  /* Darker shade on hover */
+}
+
+.chatbot-container.open {
+  opacity: 1;
+  /* Fade in */
+  transform: translateY(0);
+  /* Slide up */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  /* Smooth transition */
 }
